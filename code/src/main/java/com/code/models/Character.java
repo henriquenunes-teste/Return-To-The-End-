@@ -9,16 +9,24 @@ package com.code.models;
  * @author cliente
  */
 public class Character {
-    private Integer maxHealth;
+    protected Integer maxHealth;
     private Integer health;
     private Integer level;
+    protected Integer strength;
+    protected Integer velocity;
+    protected Integer recup;
+    protected Integer durability;
     private String name;
 
-    public Character(String name, Integer maxHealth, Integer health, Integer level) {
+    public Character(String name, Integer maxHealth, Integer level, Integer strength, Integer velocity, Integer recup, Integer durability) {
         this.name = name;
-        this.health = health;
+        this.health = maxHealth;
         this.maxHealth = maxHealth;
         this.level = level;
+        this.strength = strength;
+        this.velocity = velocity;
+        this.recup = recup;
+        this.durability = durability;
     }
 
     public Integer getMaxHealth() {

@@ -15,16 +15,51 @@ public class Save {
     private LocalDateTime last;
     private LocalDateTime created;
     private Player player;
+    private String name;
 
-    public Save(Player player,LocalDateTime last, LocalDateTime created) {
-        this.player = player;
+    public Save(String name,LocalDateTime last, LocalDateTime created) {
+        this.player = new Player(name,new Upgrade(0,0,0,0,0));
         this.created = created;
         this.last = last;
+        this.name = name;
     }
     
     public void update(Player player){
         this.player = player;
         this.last = LocalDateTime.now();
     }
+
+    public Player getPlayer() {
+        return player;
+    }
+
+    public void setPlayer(Player player) {
+        this.player = player;
+    }
+
+    public LocalDateTime getLast() {
+        return last;
+    }
+
+    public void setLast(LocalDateTime last) {
+        this.last = last;
+    }
+
+    public LocalDateTime getCreated() {
+        return created;
+    }
+
+    public void setCreated(LocalDateTime created) {
+        this.created = created;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+     
     
 }

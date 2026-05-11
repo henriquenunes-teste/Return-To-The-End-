@@ -9,4 +9,14 @@ public class PrimaryController {
     private void switchToSecondary() throws IOException {
         App.setRoot("secondary");
     }
+    
+    @FXML
+    private void play() throws IOException{
+        App.setRoot("selection");
+    }
+    
+    @FXML
+    private void saves() throws IOException{
+        App.setRoot("secondary");
+    }
 }

@@ -11,10 +11,12 @@ package com.code.models;
 public class Player extends Character{
     private Upgrade upgrade;
 
-    public Player(Upgrade upgrade, Integer maxHealth, Integer health, Integer level, String name) {
-        super(name,maxHealth,health,level);
+    public Player(String name,Upgrade upgrade) {
+        super(name,100,1,20,20,20,20);
         this.upgrade = upgrade;
     }
+    
+    
     
     
     public Integer getPoints(){
@@ -22,22 +24,22 @@ public class Player extends Character{
     }
     
     public Integer getVelocity(){
-        return 20+this.upgrade.getVelocity()*5;
+        return this.velocity+this.upgrade.getVelocity()*5;
     }
     
     public Integer getStrength(){
-        return 20+this.upgrade.getStrength()*5;
+        return this.strength+this.upgrade.getStrength()*5;
     }
     
     public Integer getRecup(){
-        return 20+this.upgrade.getRecup()*5;
+        return this.recup+this.upgrade.getRecup()*5;
     }
     
     public Integer getDurability(){
-        return 20+this.upgrade.getDurability()*5;
+        return this.durability+this.upgrade.getDurability()*5;
     }
     
     public Integer getHealth(){
-        return 20+this.upgrade.getHealth()*5;
+        return this.maxHealth+this.upgrade.getHealth()*5;
     }
 }
