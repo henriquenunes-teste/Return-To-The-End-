@@ -24,6 +24,11 @@ public class Save {
         this.name = name;
     }
     
+    @Override
+    public String toString(){
+        return "Nome:"+this.getName()+"\nLast:"+this.getLast()+"\nCreated:"+this.getCreated();
+    }
+    
     public void update(Player player){
         this.player = player;
         this.last = LocalDateTime.now();
