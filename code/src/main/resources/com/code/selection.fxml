@@ -12,6 +12,6 @@
             <Insets left="20.0" right="20.0" />
          </VBox.margin>
       </ListView>
-      <Button mnemonicParsing="false" text="Back" onAction="#back" />
+      <Button mnemonicParsing="false" onAction="#back" text="Back" />
    </children>
 </VBox>
