@@ -6,7 +6,9 @@ package com.code;
 
 import com.code.utils.Session;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
+import javafx.animation.AnimationTimer;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
@@ -14,6 +16,8 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.shape.Circle;
+import javafx.scene.shape.Rectangle;
 
 /**
  * FXML Controller class
@@ -33,6 +37,11 @@ public class GameplayController implements Initializable {
     
     @FXML
     public AnchorPane inicial;
+    
+    @FXML
+    public Rectangle villain;
+    
+    public ArrayList<Circle> balas = new ArrayList<>();
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -63,7 +72,11 @@ public class GameplayController implements Initializable {
                         
                         player.setLayoutX(player.getLayoutX()+20);
                     }
+                     
+                     
                 });
+                
+                
             }
         });
     }    

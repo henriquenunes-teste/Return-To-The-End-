@@ -10,10 +10,35 @@ package com.code.models;
  */
 public class Player extends Character{
     private Upgrade upgrade;
+    private Position position;
 
     public Player(String name,Upgrade upgrade) {
         super(name,100,1,20,20,20,20);
         this.upgrade = upgrade;
+    }
+
+    public Upgrade getUpgrade() {
+        return upgrade;
+    }
+
+    public void setUpgrade(Upgrade upgrade) {
+        this.upgrade = upgrade;
+    }
+
+    public Position getPosition() {
+        return position;
+    }
+
+    public void setPosition(Position position) {
+        this.position = position;
+    }
+
+    public Integer getMaxHealth() {
+        return maxHealth;
+    }
+
+    public void setMaxHealth(Integer maxHealth) {
+        this.maxHealth = maxHealth;
     }
     
     
