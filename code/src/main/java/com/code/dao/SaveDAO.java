@@ -23,7 +23,7 @@ public class SaveDAO extends ConnectionFactory{
     
     public SaveDAO(){
         try{
-            this.connection = createConnection("jdbc:postgresql://localhost:5432/rtte", "postgres", "postgresql");
+            this.connection = createConnection("jdbc:postgresql://localhost:5432/rtte", "postgres", "senha123");
             System.out.println("Conectado com sucesso!");
         }catch(SQLException e){
             System.err.println(e.getMessage());
