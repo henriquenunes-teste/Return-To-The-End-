@@ -5,7 +5,7 @@
 <?import javafx.scene.control.ListView?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" spacing="20.0" style="-fx-background-color: radial-gradient(radius 50%,blue,darkblue);" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.code.SelectionController">
+<VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="4000.0" prefWidth="6000.0" spacing="20.0" style="-fx-background-color: radial-gradient(radius 50%,blue,darkblue);" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.code.SelectionController">
    <children>
       <ListView fx:id="list" prefHeight="365.0" prefWidth="560.0" style="-fx-background-color: radial-gradient(radius 50%, gray, white); -fx-background-radius: 10;">
          <VBox.margin>

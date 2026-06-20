@@ -11,36 +11,41 @@ import javafx.scene.image.ImageView;
  *
  * @author cliente
  */
-public class JacareBaitola extends Character implements IBoss {
+public class Cerberus extends Character implements IBoss {
 
     
-    public JacareBaitola(String name, Integer maxHealth, Integer level, Integer strength, Integer velocity, Integer recup, Integer durability) {
+    public Cerberus(String name, Integer maxHealth, Integer level, Integer strength, Integer velocity, Integer recup, Integer durability) {
         super(name, maxHealth, level, strength, velocity, recup, durability);
     }
 
     @Override
     public void attack1(Player p) {
-        p.takeDamage(80);
+        p.takeDamage(1800);
     }
 
     @Override
     public void attack2(Player p) {
-        p.takeDamage(10);
+        p.takeDamage(900);
     }
 
     @Override
     public void attack3(Player p) {
-        p.takeDamage(300);
+        p.takeDamage(1200);
     }
 
     @Override
     public void attackOrder(Player p) {
         this.attack1(p);
-        for(int i = 0; i < 20;i++){
+        
+        
+        for(int i = 0; i < 3;i++){
             this.attack2(p);
         }
-        this.attack3(p);
-        this.attack3(p);
+        
+         
+        for(int i = 0; i < 2;i++){
+            this.attack3(p);
+        }
     }
     
 }

@@ -11,11 +11,15 @@ package com.code.models;
 public class Player extends Character{
     private Upgrade upgrade;
     private Position position;
+    private int health ;
 
     public Player(String name,Upgrade upgrade) {
         super(name,100,1,20,20,20,20);
         this.upgrade = upgrade;
+        this.health = maxHealth;
     }
+    
+    
 
     public Upgrade getUpgrade() {
         return upgrade;

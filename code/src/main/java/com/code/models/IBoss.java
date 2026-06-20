@@ -12,5 +12,5 @@ public interface IBoss {
     void attack1(Player p);
     void attack2(Player p);
     void attack3(Player p);
-    void attackOrder();
+    void attackOrder(Player p);
 }

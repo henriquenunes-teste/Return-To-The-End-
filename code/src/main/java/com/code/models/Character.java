@@ -28,6 +28,10 @@ public class Character {
         this.recup = recup;
         this.durability = durability;
     }
+    
+    public void takeDamage(int damage){
+        this.health -= damage-this.durability;
+    }
 
     public Integer getMaxHealth() {
         return maxHealth;
