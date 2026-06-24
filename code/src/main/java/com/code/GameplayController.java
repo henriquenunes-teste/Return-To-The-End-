@@ -4,6 +4,7 @@
  */
 package com.code;
 
+import com.code.utils.AlertUtils;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.URL;
@@ -16,6 +17,8 @@ import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.paint.Color;
+import javafx.scene.shape.Rectangle;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
@@ -37,6 +40,9 @@ public class GameplayController implements Initializable {
     
     @FXML
     public AnchorPane inicial;
+    public Rectangle boss_battle_1 = new Rectangle(130,190,50,50);
+    public Rectangle boss_battle_2 = new Rectangle(130,260,50,50);
+
     
     /**@FXML
     public Rectangle villain;
@@ -85,6 +91,11 @@ public class GameplayController implements Initializable {
     private double playerY = 100;
     private static final double SPEED = 2.0;
     
+    
+    // Boss Level Entering
+    private double TOLERANCE_X;
+    private double TOLERANCE_Y;    
+    
     /**@Override
     public void initialize(URL url, ResourceBundle rb) {
         inicial.sceneProperty().addListener((obs,oldScene,newScene)->{
@@ -128,6 +139,7 @@ public class GameplayController implements Initializable {
     //Separei as ações do override antigo em métodos
      @Override
     public void initialize(URL url, ResourceBundle rb) {
+        iniciarVariaveis();
         configurarCanvas();
         carregarAssets();
         configurarControles();
@@ -139,6 +151,8 @@ public class GameplayController implements Initializable {
         gc = canvas.getGraphicsContext2D();
         gc.setImageSmoothing(false); //Não borrar as sprites
         inicial.getChildren().add(canvas); //Coloca o canvas no pane assim que a gameplay abre
+        inicial.getChildren().add(boss_battle_1);
+        inicial.getChildren().add(boss_battle_2);
     }
     
 
@@ -195,6 +209,19 @@ private void carregarAssets() {
                  if(e.getCode()== KeyCode.D){ 
                      movingRight = true;
                         currentDirection = DIR_RIGHT;}
+                 
+                 if (e.getCode() == KeyCode.SPACE) {
+
+                    if (isNear(boss_battle_1) || isNear(boss_battle_2)) {
+                        try {
+                            App.setRoot("boss_battle_1");
+                        } catch(Exception err){
+                            AlertUtils.error("Erro", err);
+                        }
+                    }
+                }
+                 
+                 
                 
             });
  
@@ -219,7 +246,11 @@ private void carregarAssets() {
             });
         });
     }
-
+   
+ private boolean isNear(Rectangle rect){
+    return Math.abs(rect.getLayoutX() - playerX) < TOLERANCE_X &&
+           Math.abs(rect.getLayoutY() - playerY) < TOLERANCE_Y;
+}
     //Aplicação da biblioteca pro loop de animação do personagem
   private void iniciarGameLoop() {
         AnimationTimer timer = new AnimationTimer() {
@@ -280,4 +311,10 @@ private void carregarAssets() {
                                   playerX, playerY, FRAME_W, FRAME_H);
     }
 
+   private void iniciarVariaveis(){
+       this.TOLERANCE_X = 200;
+       this.TOLERANCE_Y = 200;
+       boss_battle_1.setFill(Color.BLUE);
+       boss_battle_2.setFill(Color.PURPLE);
+   }
 } 

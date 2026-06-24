@@ -14,8 +14,8 @@ import javafx.scene.image.ImageView;
 public class JacareBaitola extends Character implements IBoss {
 
     
-    public JacareBaitola(String name, Integer maxHealth, Integer level, Integer strength, Integer velocity, Integer recup, Integer durability) {
-        super(name, maxHealth, level, strength, velocity, recup, durability);
+    public JacareBaitola(Integer maxHealth, Integer strength, Integer velocity, Integer recup, Integer durability) {
+        super("Jacaré Baitola", maxHealth, 0, strength, velocity, recup, durability);
     }
 
     @Override

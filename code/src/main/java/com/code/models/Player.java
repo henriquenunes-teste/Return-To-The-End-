@@ -4,6 +4,9 @@
  */
 package com.code.models;
 
+import com.code.utils.Sprite;
+import javafx.scene.image.Image;
+
 /**
  *
  * @author cliente
@@ -12,11 +15,20 @@ public class Player extends Character{
     private Upgrade upgrade;
     private Position position;
     private int health ;
+    private Sprite sprite;
 
     public Player(String name,Upgrade upgrade) {
         super(name,100,1,20,20,20,20);
         this.upgrade = upgrade;
         this.health = maxHealth;
+    }
+    
+    public Player(String name,Upgrade upgrade,Image[] frames) {
+        super(name,100,1,20,20,20,20);
+        this.upgrade = upgrade;
+        this.health = maxHealth;
+        this.position = new Position(30,30);
+        this.sprite = new Sprite(frames,this.position.getX(),this.position.getY());
     }
     
     

@@ -30,7 +30,7 @@ public class Character {
     }
     
     public void takeDamage(int damage){
-        this.health -= damage-this.durability;
+        this.health -=  damage;
     }
 
     public Integer getMaxHealth() {
