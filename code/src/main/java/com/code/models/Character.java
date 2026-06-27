@@ -11,22 +11,24 @@ package com.code.models;
 public class Character {
     protected Integer maxHealth;
     private Integer health;
-    private Integer level;
     protected Integer strength;
     protected Integer velocity;
     protected Integer recup;
     protected Integer durability;
     private String name;
 
-    public Character(String name, Integer maxHealth, Integer level, Integer strength, Integer velocity, Integer recup, Integer durability) {
+    public Character(String name, Integer maxHealth, Integer strength, Integer velocity, Integer recup, Integer durability) {
         this.name = name;
         this.health = maxHealth;
         this.maxHealth = maxHealth;
-        this.level = level;
         this.strength = strength;
         this.velocity = velocity;
         this.recup = recup;
         this.durability = durability;
+    }
+    
+    public void recLife(){
+        this.health = Math.min(this.maxHealth,this.health+this.recup);
     }
     
     public void takeDamage(int damage){
@@ -49,13 +51,7 @@ public class Character {
         this.health = health;
     }
 
-    public Integer getLevel() {
-        return level;
-    }
-
-    public void setLevel(Integer level) {
-        this.level = level;
-    }
+   
 
     public String getName() {
         return name;
@@ -63,6 +59,14 @@ public class Character {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public Integer getStrength() {
+        return strength;
+    }
+
+    public void setStrength(Integer strength) {
+        this.strength = strength;
     }
     
     

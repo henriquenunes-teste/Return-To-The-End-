@@ -14,7 +14,7 @@
       <Circle fill="DODGERBLUE" layoutX="678.0" layoutY="200.0" radius="100.0" stroke="BLACK" strokeType="INSIDE" />
       <Circle fill="WHITE" layoutX="127.0" layoutY="200.0" radius="100.0" stroke="BLACK" strokeType="INSIDE" />
       <Button layoutX="14.0" layoutY="360.0" mnemonicParsing="false" style="-fx-background-color: #00f;" text="Attack" textFill="WHITE" onAction="#atacar" />
-      <Button layoutX="79.0" layoutY="360.0" mnemonicParsing="false" style="-fx-background-color: #00f;" text="Defend" textFill="WHITE" />
+      <Button layoutX="79.0" layoutY="360.0" mnemonicParsing="false" style="-fx-background-color: #00f;" text="Defend" textFill="WHITE" onAction="#defend" />
       <ProgressBar fx:id="player_life" layoutX="14.0" layoutY="14.0" prefWidth="200.0" progress="1.0" />
       <ProgressBar fx:id="villain_life" layoutX="586.0" layoutY="14.0" prefWidth="200.0" progress="1.0" />
       <GridPane layoutY="402.0" prefHeight="200.0" prefWidth="800.0" style="-fx-background-color: #00f; -fx-border-color: #009; -fx-border-width: 8px;">

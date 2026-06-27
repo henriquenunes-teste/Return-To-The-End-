@@ -16,10 +16,28 @@ public class Save {
     private LocalDateTime created;
     private Player player;
     private String name;
+    private int id;
 
     public Save(String name,LocalDateTime last, LocalDateTime created) {
         this.player = new Player(name,new Upgrade(0,0,0,0,0));
         this.created = created;
+        this.id = 0;
+        this.last = last;
+        this.name = name;
+    }
+    
+    public Save(String name,LocalDateTime last, LocalDateTime created,Player player) {
+        this.player = player;
+        this.created = created;
+        this.id = 0;
+        this.last = last;
+        this.name = name;
+    }
+    
+    public Save(int id, String name,LocalDateTime last, LocalDateTime created) {
+        this.player = new Player(name,new Upgrade(0,0,0,0,0));
+        this.created = created;
+        this.id = id;
         this.last = last;
         this.name = name;
     }
@@ -64,6 +82,14 @@ public class Save {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
      
     
