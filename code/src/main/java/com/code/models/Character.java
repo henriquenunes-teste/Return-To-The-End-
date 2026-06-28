@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package com.code.models;
 
 /**
@@ -28,43 +24,24 @@ public class Character {
         this.recup = recup;
         this.durability = durability;
     }
-    
-    public void takeDamage(int damage){
-        this.health -=  damage;
+
+    public void takeDamage(int damage) {
+        this.health -= damage;
+        // Garante que a vida não passe de 0 para negativo
+        if (this.health < 0) this.health = 0;
     }
 
-    public Integer getMaxHealth() {
-        return maxHealth;
+    // Retorna true se o personagem não tem mais vida
+    public boolean isDead() {
+        return this.health <= 0;
     }
 
-    public void setMaxHealth(Integer maxHealth) {
-        this.maxHealth = maxHealth;
-    }
-
-    public Integer getHealth() {
-        return health;
-    }
-
-    public void setHealth(Integer health) {
-        this.health = health;
-    }
-
-    public Integer getLevel() {
-        return level;
-    }
-
-    public void setLevel(Integer level) {
-        this.level = level;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-    
-    
-    
+    public Integer getMaxHealth() { return maxHealth; }
+    public void setMaxHealth(Integer maxHealth) { this.maxHealth = maxHealth; }
+    public Integer getHealth() { return health; }
+    public void setHealth(Integer health) { this.health = health; }
+    public Integer getLevel() { return level; }
+    public void setLevel(Integer level) { this.level = level; }
+    public String getName() { return name; }
+    public void setName(String name) { this.name = name; }
 }
