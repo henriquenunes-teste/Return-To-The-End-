@@ -15,7 +15,7 @@ public class Cerberus extends Character implements IBoss {
 
     
     public Cerberus(String name, Integer maxHealth, Integer level, Integer strength, Integer velocity, Integer recup, Integer durability) {
-        super(name, maxHealth, level, strength, velocity, recup, durability);
+        super(name, maxHealth, strength, velocity, recup, durability);
     }
 
     @Override

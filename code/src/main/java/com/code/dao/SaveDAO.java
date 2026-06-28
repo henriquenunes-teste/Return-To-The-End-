@@ -4,6 +4,7 @@
  */
 package com.code.dao;
 
+import com.code.models.Player;
 import com.code.models.Save;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -39,12 +40,41 @@ public class SaveDAO extends ConnectionFactory{
     }
     
     public void listAll(ObservableList<Save> list) throws SQLException {
+        
         PreparedStatement stmt = this.connection.prepareStatement("SELECT * FROM save");
         ResultSet result = stmt.executeQuery();
         
         while(result.next()){
-               list.add(new Save(result.getString("name"),result.getTimestamp("last_played").toLocalDateTime(),result.getTimestamp("created_date").toLocalDateTime()));
+               list.add(new Save(result.getInt("id") ,result.getString("name"),result.getTimestamp("last_played").toLocalDateTime(),result.getTimestamp("created_date").toLocalDateTime()));
         }
         
     }
+    
+    public void updatePlayer(Integer id,Player player) throws SQLException {
+        PlayerDAO dao = new PlayerDAO();
+        int player_id = dao.getByName(player.getName());
+        
+        PreparedStatement stmt = this.connection.prepareStatement("UPDATE save SET player_id = ? WHERE id = ?");
+        
+        stmt.setInt(1, player_id);
+        stmt.setInt(2, id);
+        
+        stmt.executeUpdate();
+    }
+    
+    public Player getPlayerBySave(int id) throws SQLException {
+        
+        PreparedStatement stmt = this.connection.prepareStatement("SELECT players.* FROM save INNER JOIN players ON save.player_id = players.id");
+        ResultSet result = stmt.executeQuery();
+        
+        
+        if(result.next()){
+            return new Player(result.getInt("id"),result.getString("name"),result.getInt("coins"),result.getInt("level"));
+        }else{
+            throw new RuntimeException("This player does not exists!");
+
+        }
+        
+        
+    }    
 }

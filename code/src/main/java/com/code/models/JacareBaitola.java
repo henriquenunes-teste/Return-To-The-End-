@@ -15,7 +15,7 @@ public class JacareBaitola extends Character implements IBoss {
 
     
     public JacareBaitola(Integer maxHealth, Integer strength, Integer velocity, Integer recup, Integer durability) {
-        super("Jacaré Baitola", maxHealth, 0, strength, velocity, recup, durability);
+        super("Jacaré Baitola", maxHealth, strength, velocity, recup, durability);
     }
 
     @Override
@@ -42,5 +42,6 @@ public class JacareBaitola extends Character implements IBoss {
         this.attack3(p);
         this.attack3(p);
     }
+
     
 }

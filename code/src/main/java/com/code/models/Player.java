@@ -13,25 +13,55 @@ import javafx.scene.image.Image;
  */
 public class Player extends Character{
     private Upgrade upgrade;
-    private Position position;
-    private int health ;
-    private Sprite sprite;
+    private int id;
+    private int coins;
+    private int level;
+
 
     public Player(String name,Upgrade upgrade) {
-        super(name,100,1,20,20,20,20);
+        super(name,100,20,20,20,20);
         this.upgrade = upgrade;
-        this.health = maxHealth;
+        this.coins = 0;
+        this.level = 1;
     }
     
-    public Player(String name,Upgrade upgrade,Image[] frames) {
-        super(name,100,1,20,20,20,20);
+    public Player(String name,Upgrade upgrade,int coins, int level) {
+        super(name,100,20,20,20,20);
         this.upgrade = upgrade;
-        this.health = maxHealth;
-        this.position = new Position(30,30);
-        this.sprite = new Sprite(frames,this.position.getX(),this.position.getY());
+        this.coins = coins;
+        this.level = level;
     }
     
     
+    public Player(String name,int coins, int level) {
+        super(name,100,20,20,20,20);
+        this.upgrade = new Upgrade(0, 0, 0, 0, 0);
+        this.coins = coins;
+        this.level = level;
+    }
+    
+    public Player(int id, String name,int coins, int level) {
+        super(name,100,20,20,20,20);
+        this.upgrade = new Upgrade(0, 0, 0, 0, 0);
+        this.coins = coins;
+        this.level = level;
+        this.id = id;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+    
+    public Player(String name) {
+        super(name,100,20,20,20,20);
+        this.upgrade = new Upgrade(0, 0, 0, 0, 0);
+        this.coins = 0;
+        this.level = 1;
+    }
 
     public Upgrade getUpgrade() {
         return upgrade;
@@ -41,13 +71,6 @@ public class Player extends Character{
         this.upgrade = upgrade;
     }
 
-    public Position getPosition() {
-        return position;
-    }
-
-    public void setPosition(Position position) {
-        this.position = position;
-    }
 
     public Integer getMaxHealth() {
         return maxHealth;
@@ -79,8 +102,21 @@ public class Player extends Character{
     public Integer getDurability(){
         return this.durability+this.upgrade.getDurability()*5;
     }
-    
-    public Integer getHealth(){
-        return this.maxHealth+this.upgrade.getHealth()*5;
+
+    public int getCoins() {
+        return coins;
     }
+
+    public void setCoins(Integer coins) {
+        this.coins = coins;
+    }
+
+    public int getLevel() {
+        return level;
+    }
+
+    public void setLevel(Integer level) {
+        this.level = level;
+    }
+    
 }
