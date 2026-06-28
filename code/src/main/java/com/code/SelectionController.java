@@ -4,7 +4,9 @@
  */
 package com.code;
 
+import com.code.dao.PlayerDAO;
 import com.code.dao.SaveDAO;
+import com.code.models.Player;
 import com.code.models.Save;
 import com.code.utils.AlertUtils;
 import com.code.utils.Session;
@@ -44,12 +46,13 @@ public class SelectionController implements Initializable {
         
         list.setOnMouseClicked(e->{
             if(e.getClickCount() >= 2){
-                Session.session = list.getSelectionModel().getSelectedItem();
+                Save save = list.getSelectionModel().getSelectedItem();
+                Session.session = save;
                 System.out.println(Session.session.getName());
                 
                 try{
-                    go();
-                }catch(IOException err){
+                    go(save.getId());
+                }catch(Exception err){
                     AlertUtils.error("exception", err);
                 }
             }
@@ -58,7 +61,32 @@ public class SelectionController implements Initializable {
     }    
     
     
-    public void go() throws IOException{
+    public void go(Integer id) throws IOException, SQLException{
+        
+        if(Session.session.getPlayer() == null){
+            String nome = AlertUtils.dialog("Nome","Digite seu nome");
+        
+            Player player = new Player(nome);
+
+            PlayerDAO dao = new PlayerDAO();
+
+            dao.create(player);
+
+
+
+            Session.session.setPlayer(player);
+
+            SaveDAO saveDao = new SaveDAO();
+
+            saveDao.updatePlayer(id, player);
+        }else{
+            SaveDAO saveDao = new SaveDAO();
+            Player player= saveDao.getPlayerBySave(id);
+            Session.session.setPlayer(player);
+        }
+        
+        
+        
         App.setRoot("gameplay");
     }
     

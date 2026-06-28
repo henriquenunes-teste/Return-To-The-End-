@@ -14,8 +14,8 @@ import javafx.scene.image.ImageView;
 public class PirataCibernetico extends Character implements IBoss {
 
     
-    public PirataCibernetico(String name, Integer maxHealth, Integer level, Integer strength, Integer velocity, Integer recup, Integer durability) {
-        super(name, maxHealth, level, strength, velocity, recup, durability);
+    public PirataCibernetico(String name, Integer maxHealth, Integer strength, Integer velocity, Integer recup, Integer durability) {
+        super(name, maxHealth,  strength, velocity, recup, durability);
     }
 
     @Override

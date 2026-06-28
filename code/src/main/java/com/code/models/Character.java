@@ -7,18 +7,16 @@ package com.code.models;
 public class Character {
     protected Integer maxHealth;
     private Integer health;
-    private Integer level;
     protected Integer strength;
     protected Integer velocity;
     protected Integer recup;
     protected Integer durability;
     private String name;
 
-    public Character(String name, Integer maxHealth, Integer level, Integer strength, Integer velocity, Integer recup, Integer durability) {
+    public Character(String name, Integer maxHealth, Integer strength, Integer velocity, Integer recup, Integer durability) {
         this.name = name;
         this.health = maxHealth;
         this.maxHealth = maxHealth;
-        this.level = level;
         this.strength = strength;
         this.velocity = velocity;
         this.recup = recup;

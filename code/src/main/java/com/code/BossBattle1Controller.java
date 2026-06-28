@@ -1,12 +1,22 @@
 package com.code;
 
+import com.code.dao.PlayerDAO;
+import com.code.dao.RunDAO;
 import com.code.models.JacareBaitola;
 import com.code.models.Player;
+import com.code.models.Run;
 import com.code.models.Upgrade;
+import com.code.utils.AlertUtils;
+import com.code.utils.GlobalData;
 import com.code.utils.Session;
 import java.io.IOException;
 import java.net.URL;
+import java.sql.SQLException;
+import javafx.util.Duration;
 import java.util.ResourceBundle;
+import java.util.concurrent.ThreadLocalRandom;
+import javafx.animation.AnimationTimer;
+import javafx.animation.PauseTransition;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
