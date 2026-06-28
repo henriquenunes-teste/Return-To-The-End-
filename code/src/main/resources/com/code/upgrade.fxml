@@ -1,13 +1,67 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Text?>
-
 <VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" spacing="20.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.code.UpgradeController">
    <children>
       <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Upgrades" />
-      <Button mnemonicParsing="false" text="Menu" />
-      <Button mnemonicParsing="false" text="Back" />
+
+      <!-- Pontos disponíveis para gastar -->
+      <Label fx:id="pontosLabel" text="Pontos: 0" />
+
+      <!-- Força -->
+      <HBox alignment="CENTER" spacing="10.0">
+         <children>
+            <Label text="Força" />
+            <Button mnemonicParsing="false" text="-" onAction="#removerForca" />
+            <Label fx:id="forcaLabel" text="0" />
+            <Button mnemonicParsing="false" text="+" onAction="#adicionarForca" />
+         </children>
+      </HBox>
+
+      <!-- Velocidade -->
+      <HBox alignment="CENTER" spacing="10.0">
+         <children>
+            <Label text="Velocidade" />
+            <Button mnemonicParsing="false" text="-" onAction="#removerVelocidade" />
+            <Label fx:id="velocidadeLabel" text="0" />
+            <Button mnemonicParsing="false" text="+" onAction="#adicionarVelocidade" />
+         </children>
+      </HBox>
+
+      <!-- Vida -->
+      <HBox alignment="CENTER" spacing="10.0">
+         <children>
+            <Label text="Vida" />
+            <Button mnemonicParsing="false" text="-" onAction="#removerVida" />
+            <Label fx:id="vidaLabel" text="0" />
+            <Button mnemonicParsing="false" text="+" onAction="#adicionarVida" />
+         </children>
+      </HBox>
+
+      <!-- Recuperação -->
+      <HBox alignment="CENTER" spacing="10.0">
+         <children>
+            <Label text="Recuperação" />
+            <Button mnemonicParsing="false" text="-" onAction="#removerRecup" />
+            <Label fx:id="recupLabel" text="0" />
+            <Button mnemonicParsing="false" text="+" onAction="#adicionarRecup" />
+         </children>
+      </HBox>
+
+      <!-- Durabilidade -->
+      <HBox alignment="CENTER" spacing="10.0">
+         <children>
+            <Label text="Durabilidade" />
+            <Button mnemonicParsing="false" text="-" onAction="#removerDurabilidade" />
+            <Label fx:id="durabLabel" text="0" />
+            <Button mnemonicParsing="false" text="+" onAction="#adicionarDurabilidade" />
+         </children>
+      </HBox>
+
+      <Button mnemonicParsing="false" text="Menu" onAction="#menu" />
+      <Button mnemonicParsing="false" text="Back" onAction="#back" />
    </children>
 </VBox>
