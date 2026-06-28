@@ -1,3 +1,7 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/javafx/FXMLController.java to edit this template
+ */
 package com.code;
 
 import com.code.dao.PlayerDAO;
@@ -9,7 +13,6 @@ import com.code.models.Upgrade;
 import com.code.utils.AlertUtils;
 import com.code.utils.GlobalData;
 import com.code.utils.Session;
-import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
 import javafx.util.Duration;
@@ -29,90 +32,211 @@ import javafx.scene.control.ProgressBar;
  */
 public class BossBattle1Controller implements Initializable {
 
+    /**
+     * Initializes the controller class.
+     */
     public Player player;
     public JacareBaitola villain;
-
-    @FXML 
+    
+    @FXML
     public ProgressBar player_life;
-    @FXML 
+    
+    @FXML
     public ProgressBar villain_life;
-    @FXML 
+    
+    @FXML
     public Label player_name;
+    
     @FXML
     public Label villain_name;
-
+    
+    
     public int turno;
     public int actions;
     public String escolhaPlayer;
-    public String escolhaInimigo;
+    public String escolhaVillain;
+    
+    public long inicio;
+    public boolean ended;
+    public boolean victory;
+    
 
-    // Quantos pontos de upgrade o jogador ganha ao matar este boss
-    private static final int PONTOS_POR_BOSS = 5;
-
+    
+    
+    
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        this.player = new Player(Session.session.getName(),
-                new Upgrade(10, 0, 100, 30, 40));
+        // TODO
+        
+       this.player = Session.session.getPlayer();
+       
+       this.villain = new JacareBaitola(2000,10,0,20,100);
+       
+       System.out.println(this.villain.getHealth());
+       System.out.println(this.player.getHealth());
 
-        this.villain = new JacareBaitola(2000, 10, 0, 20, 100);
+       
+       set_ui();
+       update_ui();
+       
+       turno = 1;
+       escolhaPlayer = "";
+       escolhaVillain = "";
+       actions = 0;
+       inicio = System.currentTimeMillis();
+       ended = false;
+       
+        AnimationTimer at = new AnimationTimer() {
+           @Override
+           public void handle(long l) {
+              if(checkEnd()){
+                  setResult();
+              }
+           }
 
-        System.out.println(this.villain.getHealth());
-
-        set_ui();
-        update_ui();
-
-        turno = 1;
-        escolhaPlayer = "";
-        escolhaInimigo = "";
-        actions = 0;
+           
+           
+           
+        };
+       
+    }    
+    
+  
+    
+    private void setResult(){
+        try {
+            RunDAO dao = new RunDAO();
+            GlobalData.victory = victory;
+            dao.create(new Run(System.currentTimeMillis()-inicio,120,170,player));
+        } catch (SQLException ex) {
+            System.getLogger(BossBattle1Controller.class.getName()).log(System.Logger.Level.ERROR, (String) null, ex);
+        }
     }
-
-    private void set_ui() {
+    
+    private void set_ui(){
         this.player_name.setText(this.player.getName());
         this.villain_name.setText(this.villain.getName());
-    }
-
-    private void update_ui() {
-        player_life.setProgress((double) this.player.getHealth() / this.player.getMaxHealth());
-        villain_life.setProgress((double) this.villain.getHealth() / this.villain.getMaxHealth());
-    }
-
-    private void setTurno() {
 
     }
+    
+    private void update_ui(){
+        double playerProgress = (double) player.getHealth() / player.getMaxHealth();
+        double villainProgress = (double) villain.getHealth() / villain.getMaxHealth();
 
-    @FXML
-    private void atacar() {
-        actions += 1;
+        player_life.setProgress(Math.max(0, Math.min(1, playerProgress)));
+        villain_life.setProgress(Math.max(0, Math.min(1, villainProgress)));
 
-        if (actions > 1) {
-            return;
-        } else {
-            this.villain.takeDamage(this.player.getStrength());
-            update_ui();
-            System.out.println(this.villain.getHealth());
+    }
+    
+    private void revidar(){
+        PauseTransition pause = new PauseTransition(Duration.seconds(2));
 
-            // Verifica se o boss morreu após o dano
-            if (this.villain.isDead()) {
-                bossDerrotado();
+        pause.setOnFinished(event -> {
+            if(!escolhaPlayer.equals("")){
+                if(escolhaPlayer.equals("wrongAttack")){
+                    escolhaVillain = "attack";
+                    player.takeDamage(villain.getStrength());
+                }else if(escolhaPlayer.equals("defend")){
+                    escolhaVillain = "attack";
+                    player.recLife();
+                    villain.recLife();
+                }else{
+                    villain.takeDamage(player.getStrength());
+                }
+
+                update_ui();
+                
+                
+                actions = 0;
+
+                turno += 1;
             }
-        }
+        });
+
+        pause.play();
     }
-
-    // Chamado quando o boss chega a 0 de vida, da pra gente adicionar um test de unit so de zoas
-    private void bossDerrotado() {
-        // Pega o upgrade do player na sessão e adiciona os pontos ganhos
-        Upgrade upgrade = Session.session.getPlayer().getUpgrade();
-        upgrade.adicionarPontos(PONTOS_POR_BOSS);
-
-        // Atualiza o save com o estado atual do player
-        Session.session.update(Session.session.getPlayer());
-
-        // Vai para a tela de upgrades para o jogador gastar os pontos
-        try {
-            App.setRoot("upgrade");
-        } catch (IOException e) {
-            System.err.println("Erro ao abrir tela de upgrade: " + e.getMessage());
+    
+    @FXML
+    private void atacar(){
+        
+        
+        actions += 1;
+        
+        if(actions > 1){
+            return;
+            
+            
+        }else{
+            
+            
+            
+            
+            int chance = ThreadLocalRandom.current().nextInt(1,3);
+            
+            if(chance == 1){
+                escolhaPlayer = "winAttack";
+            }else{
+                escolhaPlayer = "wrongAttack";
+            }
+            
+            revidar();
+            
+            
+            System.out.println(this.villain.getHealth());
+            System.out.println(this.player.getHealth());
         }
+        
+        
+        
     }
+    
+    @FXML
+    private void defend(){
+        
+        
+        actions += 1;
+        
+        if(actions > 1){
+            return;
+            
+            
+        }else{
+            
+            
+            escolhaPlayer = "defend";
+            
+            
+            revidar();
+            
+            
+            System.out.println(this.villain.getHealth());
+            System.out.println(this.player.getHealth());
+        }
+        
+        
+        
+    }
+    
+    private boolean checkEnd(){
+       
+        
+        if(player.getHealth().equals(0) || villain.getHealth().equals(0)){
+                ended = true;
+                
+                if(player.getHealth().equals(0)){
+                    victory = false;
+                }else{
+                    victory = true;
+                }
+                
+                
+                
+                return true;
+            
+        }
+        
+        
+        return false;
+    }
+    
 }

@@ -88,19 +88,19 @@ public class Player extends Character{
     }
     
     public Integer getVelocity(){
-        return this.velocity+this.upgrade.getVelocity()*5;
+        return this.getVelocity()+this.upgrade.getVelocity()*5;
     }
     
     public Integer getStrength(){
-        return this.strength+this.upgrade.getStrength()*5;
+        return this.getStrength()+this.upgrade.getStrength()*5;
     }
     
     public Integer getRecup(){
-        return this.recup+this.upgrade.getRecup()*5;
+        return this.getRecup()+this.upgrade.getRecup()*5;
     }
     
     public Integer getDurability(){
-        return this.durability+this.upgrade.getDurability()*5;
+        return this.getDurability()+this.upgrade.getDurability()*5;
     }
 
     public int getCoins() {

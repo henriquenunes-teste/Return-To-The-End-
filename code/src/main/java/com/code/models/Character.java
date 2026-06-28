@@ -7,10 +7,10 @@ package com.code.models;
 public class Character {
     protected Integer maxHealth;
     private Integer health;
-    protected Integer strength;
-    protected Integer velocity;
-    protected Integer recup;
-    protected Integer durability;
+    private Integer strength;
+    private Integer velocity;
+    private Integer recup;
+    private Integer durability;
     private String name;
 
     public Character(String name, Integer maxHealth, Integer strength, Integer velocity, Integer recup, Integer durability) {
@@ -33,13 +33,49 @@ public class Character {
     public boolean isDead() {
         return this.health <= 0;
     }
+    
+    public void recLife(){
+        this.health = Math.min(this.maxHealth,this.health+this.recup);
+    }
 
     public Integer getMaxHealth() { return maxHealth; }
     public void setMaxHealth(Integer maxHealth) { this.maxHealth = maxHealth; }
     public Integer getHealth() { return health; }
     public void setHealth(Integer health) { this.health = health; }
-    public Integer getLevel() { return level; }
-    public void setLevel(Integer level) { this.level = level; }
     public String getName() { return name; }
     public void setName(String name) { this.name = name; }
+
+    public Integer getStrength() {
+        return strength;
+    }
+
+    public void setStrength(Integer strength) {
+        this.strength = strength;
+    }
+
+    public Integer getVelocity() {
+        return velocity;
+    }
+
+    public void setVelocity(Integer velocity) {
+        this.velocity = velocity;
+    }
+
+    public Integer getRecup() {
+        return recup;
+    }
+
+    public void setRecup(Integer recup) {
+        this.recup = recup;
+    }
+
+    public Integer getDurability() {
+        return durability;
+    }
+
+    public void setDurability(Integer durability) {
+        this.durability = durability;
+    }
+    
+    
 }
