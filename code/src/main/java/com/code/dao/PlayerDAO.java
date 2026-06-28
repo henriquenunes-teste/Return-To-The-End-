@@ -22,7 +22,7 @@ public class PlayerDAO extends ConnectionFactory{
     
     public PlayerDAO(){
         try{
-            this.connection = createConnection("jdbc:postgresql://localhost:5432/rtte", "postgres", "senha123");
+            this.connection = createConnection("jdbc:postgresql://localhost:5432/postgres", "postgres", "gussmano4586");
             System.out.println("Conectado com sucesso!");
         }catch(SQLException e){
             System.err.println(e.getMessage());
@@ -36,7 +36,7 @@ public class PlayerDAO extends ConnectionFactory{
         stmt.setInt(3, player.getLevel());
         return stmt.execute();
     }
-    
+    //Altera os daos pro seu banco rodar ja que alterei pros meus
     public void listAll(ObservableList<Player> list) throws SQLException {
         PreparedStatement stmt = this.connection.prepareStatement("SELECT * FROM players");
         ResultSet result = stmt.executeQuery();
