@@ -1,13 +1,27 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package com.code.utils;
 
-/**
- *
- * @author cliente
- */
+import com.code.models.Pocao;
+import java.util.ArrayList;
+import java.util.List;
+
 public class GlobalData {
-   public static boolean victory; 
+
+    /** Resultado da última batalha. */
+    public static boolean victory = false;
+
+    /** Estoque de poções — vive em memória durante a sessão. */
+    public static List<Pocao> pocoes = new ArrayList<>();
+
+    public static void adicionarPocao(Pocao p) {
+        pocoes.add(p);
+    }
+
+    /**  a primeira poção não usada */
+    public static Pocao pegarPocaoDisponivel() {
+        return pocoes.stream().filter(p -> !p.isUsada()).findFirst().orElse(null);
+    }
+
+    public static int quantidadePocoes() {
+        return (int) pocoes.stream().filter(p -> !p.isUsada()).count();
+    }
 }
