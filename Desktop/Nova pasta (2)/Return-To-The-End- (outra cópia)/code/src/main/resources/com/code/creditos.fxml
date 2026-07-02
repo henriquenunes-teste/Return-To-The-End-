@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<VBox alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity"
+      minHeight="-Infinity" minWidth="-Infinity"
+      prefHeight="604.0" prefWidth="748.0"
+      spacing="20.0"
+      style="-fx-background-color: #00f;"
+      xmlns="http://javafx.com/javafx/26"
+      xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="com.code.CreditosController">
+
+   <padding>
+      <Insets bottom="30.0" left="40.0" right="40.0" top="30.0" />
+   </padding>
+
+   <children>
+
+      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Créditos" fill="WHITE">
+         <font><Font name="NimbusRoman-BoldItalic" size="32.0" /></font>
+      </Text>
+
+      <ScrollPane fitToWidth="true" prefHeight="430.0" prefWidth="650.0"
+                  style="-fx-background: #00f; -fx-background-color: transparent;">
+         <content>
+            <VBox alignment="TOP_CENTER" spacing="18.0">
+               <padding>
+                  <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+               </padding>
+               <children>
+
+                  <!-- Desenvolvimento -->
+                  <Label text="Desenvolvimento" textFill="WHITE">
+                     <font><Font name="NimbusRoman-BoldItalic" size="20.0" /></font>
+                  </Label>
+                  <Label text="Seu Nome Aqui" textFill="WHITE" />
+                  <Label text="Nome do Parceiro Aqui" textFill="WHITE" />
+
+                  <!-- Arte / Assets -->
+                  <Label text="Arte e Recursos Visuais" textFill="WHITE">
+                     <font><Font name="NimbusRoman-BoldItalic" size="20.0" /></font>
+                  </Label>
+                  <Label text="Ícones e sprites: créditos das fontes utilizadas" textFill="WHITE" />
+
+                  <!-- Tecnologias -->
+                  <Label text="Tecnologias" textFill="WHITE">
+                     <font><Font name="NimbusRoman-BoldItalic" size="20.0" /></font>
+                  </Label>
+                  <Label text="Java + JavaFX" textFill="WHITE" />
+                  <Label text="PostgreSQL" textFill="WHITE" />
+
+                  <!-- Agradecimentos -->
+                  <Label text="Agradecimentos" textFill="WHITE">
+                     <font><Font name="NimbusRoman-BoldItalic" size="20.0" /></font>
+                  </Label>
+                  <Label text="Obrigado por jogar!" textFill="WHITE" wrapText="true" textAlignment="CENTER" />
+
+               </children>
+            </VBox>
+         </content>
+      </ScrollPane>
+
+      <Button mnemonicParsing="false" text="Voltar" onAction="#voltar"
+              style="-fx-background-color: #0ff; -fx-border-color: #000; -fx-border-width: 2px; -fx-font-size: 14px; -fx-cursor: hand;" />
+
+   </children>
+</VBox>
