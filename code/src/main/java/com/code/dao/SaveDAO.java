@@ -21,10 +21,10 @@ import javafx.collections.ObservableList;
  */
 public class SaveDAO extends ConnectionFactory{
     private Connection connection;
-    
+        //Altera os daos pro seu banco rodar ja que alterei pros meus
     public SaveDAO(){
         try{
-            this.connection = createConnection("jdbc:postgresql://localhost:5432/rtte", "postgres", "senha123");
+            this.connection = createConnection("jdbc:postgresql://localhost:5432/postgres", "postgres", "gussmano4586");
             System.out.println("Conectado com sucesso!");
         }catch(SQLException e){
             System.err.println(e.getMessage());
