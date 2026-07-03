@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Text?>
+
+<VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" spacing="20.0" style="-fx-background-color: #00f;" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.code.UpgradeController">
+   <children>
+      <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Upgrades" />
+      <Label text="Força" textFill="WHITE" />
+
+      <!-- Força -->
+      <HBox alignment="CENTER" spacing="10.0">
+         <children>
+            <Button mnemonicParsing="false" onAction="#removerForca" style="-fx-background-color: #0f0;" text="-" />
+            <Label fx:id="forcaLabel" text="0" textFill="WHITE" />
+            <Button mnemonicParsing="false" onAction="#adicionarForca" style="-fx-background-color: #0f0;" text="+" />
+         </children>
+      </HBox>
+      <Label text="Vida" textFill="WHITE" />
+
+
+      <!-- Vida -->
+      <HBox alignment="CENTER" spacing="10.0">
+         <children>
+            <Button mnemonicParsing="false" onAction="#removerVida" style="-fx-background-color: #0f0;" text="-" />
+            <Label fx:id="vidaLabel" text="0" textFill="WHITE" />
+            <Button mnemonicParsing="false" onAction="#adicionarVida" style="-fx-background-color: #0f0;" text="+" />
+         </children>
+      </HBox>
+      <Label text="Recuperação" textFill="WHITE" />
+
+      <!-- Recuperação -->
+      <HBox alignment="CENTER" spacing="10.0">
+         <children>
+            <Button mnemonicParsing="false" onAction="#removerRecup" style="-fx-background-color: #0f0;" text="-" />
+            <Label fx:id="recupLabel" text="0" textFill="WHITE" />
+            <Button mnemonicParsing="false" onAction="#adicionarRecup" style="-fx-background-color: #0f0;" text="+" />
+         </children>
+      </HBox>
+      <Button mnemonicParsing="false" style="-fx-background-color: #0f0;" text="Save" onAction="#save"/>
+
+      
+
+      <Button mnemonicParsing="false" onAction="#menu" style="-fx-background-color: #0f0;" text="Menu" />
+      <Button mnemonicParsing="false" onAction="#back" style="-fx-background-color: #0f0;" text="Back" />
+   </children>
+</VBox>

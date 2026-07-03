@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/25" fx:controller="com.code.FormularioController">
+   <children>
+      <VBox alignment="CENTER" layoutX="-2.0" prefHeight="401.0" prefWidth="600.0">
+         <children>
+            <Label text="Criar novo save" />
+            <Label text="Name" />
+            <TextField fx:id="name">
+               <VBox.margin>
+                  <Insets left="12.0" right="12.0" />
+               </VBox.margin>
+            </TextField>
+            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="20.0">
+               <children>
+                  <Button mnemonicParsing="false" text="Criar" onAction="#save" />
+                  <Button mnemonicParsing="false" text="Voltar" onAction="#back" />
+               </children>
+            </HBox>
+         </children>
+      </VBox>
+   </children>
+</AnchorPane>
