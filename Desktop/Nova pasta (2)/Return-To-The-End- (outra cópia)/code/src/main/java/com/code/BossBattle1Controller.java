@@ -178,6 +178,7 @@ public class BossBattle1Controller implements Initializable {
         if (++actions > 1) return;
         escolhaPlayer = ThreadLocalRandom.current().nextInt(1, 3) == 1 ? "winAttack" : "wrongAttack";
         revidar();
+        System.out.println(player.getStrength());
     }
 
     @FXML

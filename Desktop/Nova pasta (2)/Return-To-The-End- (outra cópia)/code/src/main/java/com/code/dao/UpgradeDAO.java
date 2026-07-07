@@ -21,7 +21,7 @@ public class UpgradeDAO extends ConnectionFactory{
     
     public UpgradeDAO(){ 
         try{
-            this.connection = createConnection("jdbc:postgresql://localhost:5432/postgres", "postgres", "gussmano4586");
+            this.connection = createConnection("jdbc:postgresql://localhost:5432/rtte", "postgres", "senha123");
             System.out.println("Conectado com sucesso!");
         }catch(SQLException e){
             System.err.println(e.getMessage());
